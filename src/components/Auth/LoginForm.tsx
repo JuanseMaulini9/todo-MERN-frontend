@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { login } from "../../services/auth";
-
-
+import useLogin from "../../hooks/useLogin";
 
 interface LoginFormInterface {
   username: string;
@@ -14,14 +12,17 @@ const LoginForm = () => {
     password: "",
   });
 
+  const {login} = useLogin()
+
+
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     SetLoginData({ ...loginData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    login(loginData)
+    await login(loginData)
   };
 
   return (

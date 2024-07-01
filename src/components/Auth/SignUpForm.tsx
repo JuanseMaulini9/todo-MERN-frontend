@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import { signup } from "../../services/auth";
+import useSignup from "../../hooks/useSignup";
 
 interface SignInInterface {
   username: string;
@@ -8,8 +7,10 @@ interface SignInInterface {
   confirmPass: string;
 }
 
+
 const SignUpForm = () => {
-  const [signInData, SetSignInData] = useState<SignInInterface>({
+  const {signup} = useSignup()
+  const [signUpData, setSignUpData] = useState<SignInInterface>({
     username: "",
     password: "",
     confirmPass: "",
@@ -17,12 +18,12 @@ const SignUpForm = () => {
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    SetSignInData({ ...signInData, [name]: value });
+    setSignUpData({ ...signUpData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    signup(signInData);
+    await signup(signUpData)
   };
 
   return (

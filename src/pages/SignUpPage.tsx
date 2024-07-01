@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-
 import SignUpForm from "../components/Auth/SignUpForm";
-const SignUpPage = () => {
+
+
+const SignUpPage = () => {  
   return (
     <>
       <div className="bg-slate-900 rounded flex flex-col justify-between items-center text-center w-96 h-96">
