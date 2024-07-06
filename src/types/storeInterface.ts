@@ -2,7 +2,7 @@ export interface TaskCardInterface {
   id: string;
   title: string;
   description: string;
-  expires: Date;
+  expires: string;
   total: number;
   completedTasks: number;
   stateValue: string;

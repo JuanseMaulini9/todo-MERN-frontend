@@ -8,12 +8,17 @@ export const cardSlice = createSlice({
   name: "card",
   initialState,
   reducers: {
-    changeState: (state, action: PayloadAction<PayloadInterface>) => {
+    moveTask: (state, action: PayloadAction<PayloadInterface>) => {
       const { id, newStateValue } = action.payload;
-      const taskCard = state.find((task) => task.id === id);
-      if (taskCard) taskCard.stateValue = newStateValue;
+      const taskCardIndex = state.findIndex((task) => task.id === id);
+      if (taskCardIndex !== -1) {
+        state[taskCardIndex] = {
+          ...state[taskCardIndex],
+          stateValue: newStateValue,
+        };
+      }
     },
   },
 });
 
-export const { changeState } = cardSlice.actions;
+export const { moveTask } = cardSlice.actions;

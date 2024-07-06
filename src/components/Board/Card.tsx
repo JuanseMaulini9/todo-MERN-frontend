@@ -1,34 +1,29 @@
 interface CardProps {
+  id: string,
   title: string;
   description: string;
-  finalDate: Date;
+  finalDate: string;
   allTasks: number;
   progress: number;
-
-  handleDragging: (dragging: boolean) => void
 }
 
 const Card = ({
+  id,
   title,
   description,
   finalDate,
   progress,
   allTasks,
-  handleDragging 
 }: CardProps) => {
-
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault()
-    console.log('moviendo')
-    handleDragging(true)
-  }
-  const handleDragEnd = () => {
-    handleDragging(false)
-    console.log('dejando')
+  
+  const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.dataTransfer.setData("text/plain", id);
   }
   
   return (
-    <div className="bg-main-gray m-4 rounded h-40 p-2" draggable onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    
+    
+    <div className="bg-main-gray m-4 rounded h-40 p-2" draggable onDragStart={dragStart}>
       <section className="ml-2">
         <h3 className="font-bold text-lg">{title}</h3>
         <h4 className=" text-text-secondary mb-4 -mt-1">
@@ -50,8 +45,7 @@ const Card = ({
 
       <section className="ml-2 ">
         <p className="bg-secondary-gray text-text-secondary w-20 font-bold rounded-2xl text-xs h-6 mt-1 items-center flex justify-center">
-          {finalDate.getDay()}/{finalDate.getMonth() + 1}/
-          {finalDate.getFullYear()}
+          {finalDate}
         </p>
       </section>
     </div>
