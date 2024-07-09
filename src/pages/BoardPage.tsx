@@ -1,7 +1,7 @@
 import Board from "../components/Board/Board";
 import AsideButton from "../components/Board/AsideButton";
 import { useAppSelector } from "../store/hooks";
-import CardModal from "../components/Board/CardModal";
+import Modal from "../components/Modal/Modal";
 
 const BoardPage = () => {
   
@@ -25,7 +25,7 @@ const BoardPage = () => {
       <section className="flex-1 overflow-auto">
         <Board></Board>
       </section>
-      {modalView ? <CardModal></CardModal>: ''}
+      {modalView ? <Modal></Modal>: ''}
     </div>
   );
 };
