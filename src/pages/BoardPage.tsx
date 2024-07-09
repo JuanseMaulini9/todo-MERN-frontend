@@ -1,8 +1,14 @@
 import Board from "../components/Board/Board";
 import AsideButton from "../components/Board/AsideButton";
+import { useAppSelector } from "../store/hooks";
+import CardModal from "../components/Board/CardModal";
 
 const BoardPage = () => {
+  
+  const modalView = useAppSelector(state => state.viewModal)
+
   return (
+    
     <div className="flex h-screen pt-10 overflow-hidden">
       <aside className="bg-slate-950 w-52 h-full">
         <section className="p-4 flex justify-between">
@@ -19,6 +25,7 @@ const BoardPage = () => {
       <section className="flex-1 overflow-auto">
         <Board></Board>
       </section>
+      {modalView ? <CardModal></CardModal>: ''}
     </div>
   );
 };

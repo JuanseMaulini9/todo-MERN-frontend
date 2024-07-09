@@ -1,5 +1,8 @@
+import { useAppDispatch } from "../../store/hooks";
+import { viewModal } from "../../store/modalSlice";
+
 interface CardProps {
-  id: string,
+  id: string;
   title: string;
   description: string;
   finalDate: string;
@@ -15,15 +18,23 @@ const Card = ({
   progress,
   allTasks,
 }: CardProps) => {
-  
   const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData("text/plain", id);
+  };
+
+  const dispatch = useAppDispatch()
+
+  const handleModal = () => {
+    dispatch(viewModal('MODAL_ON'))
   }
-  
+
   return (
-    
-    
-    <div className="bg-main-gray m-4 rounded h-40 p-2" draggable onDragStart={dragStart}>
+    <div
+      className="bg-main-gray m-4 rounded h-40 p-2"
+      draggable
+      onDragStart={dragStart}
+      onClick={handleModal}
+    >
       <section className="ml-2">
         <h3 className="font-bold text-lg">{title}</h3>
         <h4 className=" text-text-secondary mb-4 -mt-1">
