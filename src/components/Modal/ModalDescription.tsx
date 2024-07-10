@@ -1,51 +1,57 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const ModalDescription = () => {
-  
-  const [editDescription, setEditDescription] = useState(false)
-  
+  const [editDescription, setEditDescription] = useState(false);
+
   const handleEditDescription = () => {
-    setEditDescription(true)
-  }
+    setEditDescription(true);
+  };
 
   const handleSaveDescription = () => {
-    setEditDescription(false)
-  }
+    setEditDescription(false);
+  };
+
+  const handleCancelDescription = () => {
+    setEditDescription(false);
+  };
 
   return (
-    <section className="h-60 w-full border rounded my-6 p-1">
-          <h3>Descripcion</h3>
-          {editDescription ? (
-            <div>
-              <textarea className="text-text-secondary ml-4 mt-4 mr-24 overflow-hidden resize-none w-auto">
-                Monkey D. Luffy es el protagonista de la serie de manga y anime
-                "One Piece", creada por Eiichiro Oda. Nacido en el pequeño
-                pueblo de Fushia, Luffy es un joven pirata con un sueño
-                singular: convertirse en el Rey de los Piratas al encontrar el
-                legendario tesoro conocido como "One Piece". Para lograr este
-                objetivo, Luffy forma su propia tripulación, los Piratas del
-                Sombrero de Paja, y se embarca en una aventura épica a través
-                del vasto y peligroso Grand Line.
-              </textarea>
-              <button onClick={handleSaveDescription}>boton para editar</button>
-            </div>
-          ) : (
-            <div>
-              <p className="text-text-secondary text-lg">
-                Monkey D. Luffy es el protagonista de la serie de manga y anime
-                "One Piece", creada por Eiichiro Oda. Nacido en el pequeño
-                pueblo de Fushia, Luffy es un joven pirata con un sueño
-                singular: convertirse en el Rey de los Piratas al encontrar el
-                legendario tesoro conocido como "One Piece". Para lograr este
-                objetivo, Luffy forma su propia tripulación, los Piratas del
-                Sombrero de Paja, y se embarca en una aventura épica a través
-                del vasto y peligroso Grand Line.
-              </p>
-              <button onClick={handleEditDescription}>boton para editar</button>
-            </div>
-          )}
-        </section>
-  ) 
-}
+    <>
+      <section className="mt-4 flex justify-between mb-3">
+        <h3 className="text-text-main font-bold text-lg">Description</h3>
+        {!editDescription && (
+          <button
+            onClick={handleEditDescription}
+            className="bg-secondary-gray w-20 h-8 font-semibold text-text-main rounded"
+          >
+            Edit
+          </button>
+        )}
+      </section>
+      <section>
+        {editDescription ? (
+          <>
+            <textarea className="resize-y w-full h-auto min-h-28 max-h-40 text-text-main p-2 rounded" placeholder="Description...">
 
-export default ModalDescription
+            </textarea>
+            <div className="flex gap-3 mb-4">
+            <button onClick={handleSaveDescription} className="bg-blue-700 w-20 h-8 font-semibold text-white rounded hover:bg-blue-500">Save</button>
+            <button onClick={handleCancelDescription} className="w-20 h-8 font-semibold text-text-main rounded hover:bg-secondary-gray">Cancel</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="w-full h-32 text-text-main">
+              Monkey D. Luffy es el protagonista de la serie de manga y anime
+              "One Piece", creada por Eiichiro Oda. Nacido en el pequeño pueblo
+              de Fushia, Luffy es un joven pirata con un sueño singular:
+              convertirse en el Rey de los Piratas al encontrar el legendario
+            </p>
+          </>
+        )}
+      </section>
+    </>
+  );
+};
+
+export default ModalDescription;
