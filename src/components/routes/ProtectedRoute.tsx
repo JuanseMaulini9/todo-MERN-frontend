@@ -9,7 +9,6 @@ const Protectedroute = () =>{
     return(< Navigate to='/login'/>)
   }
 
-
   return (
     <Outlet/>
   )

@@ -13,7 +13,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<BoardPage/>} />
+          <Route path="/" element={<BoardPage />} />
           <Route />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -24,7 +24,7 @@ function App() {
                 !authUser.username ? (
                   <Navigate to="/login" />
                 ) : (
-                  <h1>Este es el tablero</h1>
+                  <BoardPage/>
                 )
               }
             />

@@ -36,7 +36,7 @@ const Card = ({
       onClick={handleModal}
     >
       <section className="ml-2">
-        <h3 className="font-bold text-lg">{title}</h3>
+        <h3 className="font-bold text-lg text-text-main">{title}</h3>
         <h4 className=" text-text-secondary mb-4 -mt-1">
           {description || "hola"}
         </h4>
@@ -44,7 +44,7 @@ const Card = ({
 
       <section className="ml-2 mr-2">
         <span className=" text-text-secondary -mb-2 ">progress</span>
-        <span className=" ml-2">
+        <span className=" ml-2 text-text-main">
           {progress}/{allTasks}
         </span>
         <progress
@@ -55,7 +55,7 @@ const Card = ({
       </section>
 
       <section className="ml-2 ">
-        <p className="bg-secondary-gray text-text-secondary w-20 font-bold rounded-2xl text-xs h-6 mt-1 items-center flex justify-center">
+        <p className="bg-secondary-gray text-text-main w-20 font-bold rounded-2xl text-xs h-6 mt-1 items-center flex justify-center">
           {finalDate}
         </p>
       </section>

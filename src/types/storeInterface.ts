@@ -12,3 +12,10 @@ export interface PayloadInterface {
   id: string;
   newStateValue: string;
 }
+
+export interface BoardInterface {
+  _id: string;
+  nameBoard: string;
+  user: string;
+  tasks: [string];
+}

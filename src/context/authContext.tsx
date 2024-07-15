@@ -16,7 +16,7 @@ export const AuthUserContext = createContext<AuthInterface>({
 
 
 export const AuthUserProvider = ({children}: AuthProviderProps) => {
-  const [authUser, setAuthUser] = useState<UserInterface>({username: 'yo'})
+  const [authUser, setAuthUser] = useState<UserInterface>({username: ''})
 
 
   return (

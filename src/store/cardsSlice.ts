@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TaskCardInterface, PayloadInterface } from "../types/storeInterface";
-import { fakeTasks } from "../fakeTasks";
+import fakeTasks from "../fakeTasks";
 
 const initialState: TaskCardInterface[] = fakeTasks;
 
