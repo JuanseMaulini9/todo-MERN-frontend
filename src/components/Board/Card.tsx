@@ -1,25 +1,18 @@
 import { useAppDispatch } from "../../store/hooks";
 import { viewModal } from "../../store/modalSlice";
-
-interface CardProps {
-  id: string;
-  title: string;
-  description: string;
-  finalDate: string;
-  allTasks: number;
-  progress: number;
-}
+import {TasksInterface} from  "../../types/storeInterface"
 
 const Card = ({
-  id,
+  _id,
   title,
   description,
-  finalDate,
-  progress,
-  allTasks,
-}: CardProps) => {
+  expires,
+  // taskList,
+  // stateValue,
+  // boardId
+}: TasksInterface) => {
   const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    e.dataTransfer.setData("text/plain", id);
+    e.dataTransfer.setData("text", _id);
   };
 
   const dispatch = useAppDispatch()
@@ -45,18 +38,18 @@ const Card = ({
       <section className="ml-2 mr-2">
         <span className=" text-text-secondary -mb-2 ">progress</span>
         <span className=" ml-2 text-text-main">
-          {progress}/{allTasks}
+          {/* {progress}/{allTasks} */}
         </span>
         <progress
-          max={allTasks}
-          value={progress}
+          // max={allTasks}
+          // value={progress}
           className="h-1 w-full "
         ></progress>
       </section>
 
       <section className="ml-2 ">
         <p className="bg-secondary-gray text-text-main w-20 font-bold rounded-2xl text-xs h-6 mt-1 items-center flex justify-center">
-          {finalDate}
+          {expires.toString()}
         </p>
       </section>
     </div>

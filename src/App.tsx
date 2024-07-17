@@ -14,12 +14,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<BoardPage />} />
-          <Route />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route element={<Protectedroute />}>
             <Route
-              path="/board"
+              path="/board/"
               element={
                 !authUser.username ? (
                   <Navigate to="/login" />

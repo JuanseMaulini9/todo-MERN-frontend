@@ -1,21 +1,31 @@
-export interface TaskCardInterface {
-  id: string;
+export interface TaskChecked {
+  value: boolean;
+  name: string;
+}
+
+export enum StateValue {
+  todo = "to do",
+  inprogress = "in progress",
+  done = "done",
+}
+
+export interface TasksInterface {
+  _id: string;
   title: string;
   description: string;
-  expires: string;
-  total: number;
-  completedTasks: number;
-  stateValue: string;
+  expires: Date;
+  taskList: TaskChecked[];
+  stateValue: StateValue;
+  boardId: string;
+}
+export interface BoardInterface {
+  _id: string;
+  nameBoard: string;
+  user: string;
+  tasks: TasksInterface[];
 }
 
 export interface PayloadInterface {
   id: string;
   newStateValue: string;
-}
-
-export interface BoardInterface {
-  _id: string;
-  nameBoard: string;
-  user: string;
-  tasks: [string];
 }

@@ -1,42 +1,51 @@
 import Card from "./Card";
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { moveTask } from "../../store/cardsSlice";
+import useMoveTask from "../../hooks/useMoveTask";
+
+import { useAppSelector } from "../../store/hooks";
 
 interface StateBoardProps {
   stateBoard: string;
 }
 
 const StateBoard = ({ stateBoard }: StateBoardProps) => {
-  const dispatch = useAppDispatch()
-  const taskCards = useAppSelector((state) => state.cards);
+  const board = useAppSelector((state) => state.board); 
+  const { moveTask } = useMoveTask(stateBoard);
 
-  const onDragOver = (e: React.DragEvent<HTMLDivElement>) =>{
-    e.preventDefault()
-  } 
+  const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
 
-  const onDrop = (e: React.DragEvent<HTMLDivElement>) =>{
-    const id = e.dataTransfer.getData('text')
+  const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    const id = e.dataTransfer.getData("text");
 
-    const card = taskCards.find(card => card.id === id)
-    if(card)
-    dispatch(moveTask({id, newStateValue: stateBoard.toLocaleLowerCase()}))
-
-  }
+    const card = board.currentBoard?.tasks.find((card) => card._id === id);
+    if (card) {
+      console.log(`entre, id: ${id}`);
+      if(board.currentBoard?.tasks)
+      moveTask(id, board.currentBoard?.tasks);
+      console.log(board);
+    }
+  };
 
   return (
-    <div className={`bg-slate-100 w-5/6 h-5/6 pt-2 rounded relative`} onDragOver={onDragOver} onDrop={onDrop}>
+    <div
+      className={`bg-slate-100 w-5/6 h-5/6 pt-2 rounded relative`}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+    >
       <h3 className="text-black text-center font-bold text-lg">{stateBoard}</h3>
-      {taskCards.map((card) =>
+      {board.currentBoard?.tasks.map((card) =>
         card.stateValue.toLocaleLowerCase() ===
         stateBoard.toLocaleLowerCase() ? (
           <Card
-            id={card.id}
+            _id={card._id}
             title={card.title}
             description={card.description}
-            finalDate={card.expires}
-            allTasks={card.total}
-            key={card.id}
-            progress={card.completedTasks}
+            expires={card.expires}
+            taskList={card.taskList}
+            stateValue={card.stateValue}
+            boardId={card.boardId}
+            key={card._id}
           ></Card>
         ) : (
           ""

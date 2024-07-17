@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { cardSlice } from "./cardsSlice";
 import { viewModalSlice } from "./modalSlice";
-import { boardSlice } from "./boardsSlice";
+import { boardSlice } from "./boardSlice";
+import { currentBoardSlice } from "./currentBoardSlice";
 
 export const store = configureStore({
   reducer: {
-    cards: cardSlice.reducer,
     viewModal: viewModalSlice.reducer,
-    boards: boardSlice.reducer,
+    board: boardSlice.reducer,
+    currentBoard: currentBoardSlice.reducer,
   },
 });
 
