@@ -1,16 +1,14 @@
 import axios from "../services/axiosInstance";
-// import { useAppDispatch } from "../store/hooks";
-// import { addBoard } from "../store/boardsSlice";
+import { BoardsName } from "../types/storeInterface";
 
-const useNewBoard = (nameBoard: string) => {
-  // const dispatch = useAppDispatch();
+const useNewBoard = (nameBoard: string, setBoards:React.Dispatch<React.SetStateAction<BoardsName[]>>) => {
 
   const newBoardFetch = async () => {
     try {
       const res = await axios.post("/board", { nameBoard: nameBoard });
       if (res.status === 200) {
-        const newBoard = res.data;
-        // dispatch(addBoard(newBoard));
+        const newBoard: BoardsName = res.data;
+        setBoards(prevState => ([...prevState, newBoard]))
       }
     } catch (error) {
       console.log(error);

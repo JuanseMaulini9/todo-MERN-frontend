@@ -1,14 +1,9 @@
 import axios from "../services/axiosInstance";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import {BoardsName} from '../types/storeInterface'
 
-interface BoardsName {
-  _id: string;
-  nameBoard: string;
-}
-
-const useBoards = () => {
-  const [boards, setBoards] = useState<BoardsName[]>([]);
-
+const useBoards = (setBoards: React.Dispatch<React.SetStateAction<BoardsName[]>>) => {
+  
   useEffect(() => {
     const fetchBoards = async () => {
       try {
@@ -23,9 +18,8 @@ const useBoards = () => {
       }
     };
     fetchBoards();
-  }, []);
+  }, [setBoards]);
 
-  return { boards, setBoards };
 };
 
 export default useBoards;

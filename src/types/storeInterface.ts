@@ -29,3 +29,8 @@ export interface PayloadInterface {
   id: string;
   newStateValue: string;
 }
+
+export interface BoardsName {
+  _id: string;
+  nameBoard: string;
+}
