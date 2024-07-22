@@ -1,22 +1,27 @@
 import { Dispatch } from "react";
 import { useState } from "react";
 import useNewBoard from "../../hooks/useNewBoard";
-import { BoardsName } from "../../types/storeInterface";
+import { createBoard } from "../../store/boadsNamesSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 interface Props {
   setNewBoard: Dispatch<boolean>;
-  setBoards: Dispatch<React.SetStateAction<BoardsName[]>>
 }
 
-const CreateBoard = ({ setNewBoard, setBoards }: Props) => {
+const CreateBoard = ({ setNewBoard }: Props) => {
+  const dispatch = useAppDispatch()
   const [boardName, setBoardName] = useState<string>("");
-  const { newBoardFetch } = useNewBoard(boardName, setBoards);
   const handleBoardName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBoardName(e.target.value);
   };
+  const { newBoardFetch } = useNewBoard(boardName);
 
   const saveNewBoard = async() => {
-    await newBoardFetch();
+    const newBoard = await newBoardFetch();
+    if(newBoard){
+      console.log(newBoard)
+      dispatch(createBoard(newBoard))
+    }
     setNewBoard(false);
   };
   const closeNewBoard = () => {

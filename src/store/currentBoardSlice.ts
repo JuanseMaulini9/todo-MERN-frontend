@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface CurrentBoardState {
-  currentBoardId: string | null;
+  currentBoardId: string;
 }
 
 const initialState: CurrentBoardState = {
-  currentBoardId: null,
+  currentBoardId: "",
 };
 
 export const currentBoardSlice = createSlice({

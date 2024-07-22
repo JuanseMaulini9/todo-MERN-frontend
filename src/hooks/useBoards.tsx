@@ -1,15 +1,16 @@
 import axios from "../services/axiosInstance";
-import { useEffect } from "react";
-import {BoardsName} from '../types/storeInterface'
+import { useEffect, useState } from "react";
+import { BoardsName } from "../types/storeInterface";
 
-const useBoards = (setBoards: React.Dispatch<React.SetStateAction<BoardsName[]>>) => {
-  
+const useBoards = () => {
+  const [boardsNames, setBoardsNames] = useState<BoardsName[]>([]);
+
   useEffect(() => {
     const fetchBoards = async () => {
       try {
         const res = await axios.get("board/boardsName");
         if (res.status === 200) {
-          setBoards(res.data.boards);
+          setBoardsNames(res.data.boards);
         }
       } catch (error) {
         if (error instanceof Error) {
@@ -18,8 +19,9 @@ const useBoards = (setBoards: React.Dispatch<React.SetStateAction<BoardsName[]>>
       }
     };
     fetchBoards();
-  }, [setBoards]);
+  }, []);
 
+  return { boardsNames };
 };
 
 export default useBoards;

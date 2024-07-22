@@ -10,7 +10,7 @@ const NewBoardButton = ({ setNewBoard }: Props) => {
 
   return (
     <button
-      className="h-8 px-4 font-bold rounded hover:bg-slate-800 text-center"
+      className="h-8 w-8 rounded-full p-2 text-center hover:bg-blue-500 bg-blue-700 font-bold"
       onClick={handleBoard}
     >
       +
