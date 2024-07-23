@@ -23,7 +23,7 @@ const Card = ({
 
   return (
     <div
-      className="bg-main-gray m-4 rounded h-40 p-2"
+      className="bg-secondary-gray m-4 rounded h-40 p-2 shadow-lg cursor-grab"
       draggable
       onDragStart={dragStart}
       onClick={handleModal}

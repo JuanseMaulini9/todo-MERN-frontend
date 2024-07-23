@@ -20,7 +20,7 @@ const BoardHeader = () => {
   }
 
   return (
-    <div className="bg-secondary-gray h-12 border px-8 flex items-center justify-between">
+    <div className="bg-main-gray py-2 px-8 flex items-center justify-between ">
       {!handleEditTitle ? (
         <h2 className="font-bold text-lg text-text-main">
           {currentBoard?.nameBoard}

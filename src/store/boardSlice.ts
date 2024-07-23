@@ -23,7 +23,10 @@ export const boardSlice = createSlice({
         state.currentBoard.tasks = tasks;
       }
     },
+    createTask: (state, action: PayloadAction<TasksInterface>) => {
+      state.currentBoard?.tasks.push(action.payload);
+    },
   },
 });
 
-export const { setBoard, setMoveTask } = boardSlice.actions;
+export const { setBoard, setMoveTask, createTask } = boardSlice.actions;

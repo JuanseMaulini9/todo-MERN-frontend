@@ -21,7 +21,7 @@ const SideBar = () => {
   const [newBoard, setNewBoard] = useState(false);
 
   return (
-    <aside className="bg-slate-950 w-52 h-full overflow-y-scroll">
+    <aside className="bg-main-gray w-52 h-full overflow-y-scroll">
       <section className="p-4 flex justify-between">
         <h3 className="text-2xl font-bold">Boards</h3>
         <NewBoardButton setNewBoard={setNewBoard} />

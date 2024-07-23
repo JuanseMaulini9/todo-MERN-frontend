@@ -11,11 +11,11 @@ const Board = () => {
   return (
     <>
       {board ? (
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col overflow-hidden">
           <BoardHeader></BoardHeader>
           <div className="h-full bg-secondary-gray flex justify-around gap-16 px-8 pt-8">
             <StateBoard stateBoard="To do"></StateBoard>
-            <StateBoard stateBoard="In Process"></StateBoard>
+            <StateBoard stateBoard="In progress"></StateBoard>
             <StateBoard stateBoard="Done"></StateBoard>
           </div>
         </div>

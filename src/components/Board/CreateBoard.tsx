@@ -32,7 +32,7 @@ const CreateBoard = ({ setNewBoard }: Props) => {
     <div className="mx-1">
       <input
         type="text"
-        className="w-full bg-main-gray rounded"
+        className="w-full bg-secondary-gray rounded"
         onChange={handleBoardName}
       />
       <section className="flex gap-2 mt-1">

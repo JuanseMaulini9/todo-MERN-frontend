@@ -1,15 +1,20 @@
 import Card from "./Card";
 import useMoveTask from "../../hooks/useMoveTask";
-
 import { useAppSelector } from "../../store/hooks";
+
+import useCreateCard from "../../hooks/useCreatecard";
 
 interface StateBoardProps {
   stateBoard: string;
 }
 
+
+
 const StateBoard = ({ stateBoard }: StateBoardProps) => {
   const board = useAppSelector((state) => state.board); 
   const { moveTask } = useMoveTask(stateBoard);
+
+  const {fetchCreateCard} = useCreateCard()
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -23,17 +28,24 @@ const StateBoard = ({ stateBoard }: StateBoardProps) => {
       console.log(`entre, id: ${id}`);
       if(board.currentBoard?.tasks)
       moveTask(id, board.currentBoard?.tasks);
-      console.log(board);
     }
   };
 
+  const handleCreateCard = async() => {
+    if(board.currentBoard)
+    await fetchCreateCard(stateBoard.toLocaleLowerCase(), board.currentBoard._id)
+  }
+
   return (
     <div
-      className={`bg-slate-100 w-5/6 h-5/6 pt-2 rounded relative`}
+      className={`bg-main-gray w-5/6 h-5/6 pt-2 rounded relative overflow-scroll shadow-lg `}
       onDragOver={onDragOver}
       onDrop={onDrop}
     >
-      <h3 className="text-black text-center font-bold text-lg">{stateBoard}</h3>
+      <section className="flex justify-between px-4">
+      <h3 className="text-text-main text-center font-bold text-lg">{stateBoard}</h3>
+      <button className="text-text-secondary hover:text-text-main bg-secondary-gray px-2 rounded" onClick={handleCreateCard}>Add task</button>
+      </section>
       {board.currentBoard?.tasks.map((card) =>
         card.stateValue.toLocaleLowerCase() ===
         stateBoard.toLocaleLowerCase() ? (
@@ -51,10 +63,7 @@ const StateBoard = ({ stateBoard }: StateBoardProps) => {
           ""
         )
       )}
-
-      <button className="text-black absolute w-full pt-2 pb-4 bottom-0 text-center rounded hover:bg-slate-200 cursor-pointer">
-        Create Card
-      </button>
+    
     </div>
   );
 };

@@ -16,7 +16,7 @@ const AsideButton = ({ _id, boardName }: AsideButtonProps) => {
   return (
     <>
       <li
-        className="w-full h-full p-4 flex justify-between hover:bg-slate-900 cursor-pointer"
+        className="w-full h-full p-4 flex justify-between hover:bg-secondary-gray cursor-pointer"
         onClick={handleCurrentBoard}
       >
         {boardName}
