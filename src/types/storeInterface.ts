@@ -1,6 +1,7 @@
 export interface TaskChecked {
   value: boolean;
   name: string;
+  _id: string;
 }
 
 export enum StateValue {

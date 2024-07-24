@@ -1,14 +1,33 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../store/hooks";
+import { editTask } from "../../store/boardSlice";
+import useModal from "../../hooks/useModal";
 
-const ModalDescription = () => {
+interface Props {
+  description:string
+}
+
+const ModalDescription = ({description}: Props) => {
   const [editDescription, setEditDescription] = useState(false);
+  const [descriptionState, setDescriptionState] = useState(description)
+  const dispatch = useAppDispatch()
+  const {fetchEditDescription} = useModal()
+
+  const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescriptionState(e.target.value)
+  }
 
   const handleEditDescription = () => {
     setEditDescription(true);
   };
 
-  const handleSaveDescription = () => {
+  const handleSaveDescription = async () => {
     setEditDescription(false);
+    const res = await fetchEditDescription(descriptionState)
+    if(res.status === 200){
+      const updateTask = res.data.update
+      dispatch(editTask(updateTask))
+    }
   };
 
   const handleCancelDescription = () => {
@@ -31,7 +50,7 @@ const ModalDescription = () => {
       <section>
         {editDescription ? (
           <>
-            <textarea className="resize-y w-full h-auto min-h-28 max-h-40 text-text-main p-2 rounded" placeholder="Description...">
+            <textarea className="resize-y w-full h-auto min-h-28 max-h-40 text-text-main p-2 rounded" placeholder="Description..." onChange={handleDescription} value={descriptionState}>
 
             </textarea>
             <div className="flex gap-3 mb-4">
@@ -42,10 +61,7 @@ const ModalDescription = () => {
         ) : (
           <>
             <p className="w-full h-32 text-text-main">
-              Monkey D. Luffy es el protagonista de la serie de manga y anime
-              "One Piece", creada por Eiichiro Oda. Nacido en el pequeño pueblo
-              de Fushia, Luffy es un joven pirata con un sueño singular:
-              convertirse en el Rey de los Piratas al encontrar el legendario
+              {descriptionState}
             </p>
           </>
         )}

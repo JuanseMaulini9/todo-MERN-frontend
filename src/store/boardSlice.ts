@@ -26,7 +26,19 @@ export const boardSlice = createSlice({
     createTask: (state, action: PayloadAction<TasksInterface>) => {
       state.currentBoard?.tasks.push(action.payload);
     },
+    editTask: (state, action: PayloadAction<TasksInterface>) => {
+      const taskId = action.payload._id;
+      if (state.currentBoard) {
+        const index = state.currentBoard.tasks.findIndex(
+          (task) => task._id === taskId
+        );
+        if (index !== -1) {
+          state.currentBoard.tasks[index] = action.payload;
+        }
+      }
+    },
   },
 });
 
-export const { setBoard, setMoveTask, createTask } = boardSlice.actions;
+export const { setBoard, setMoveTask, createTask, editTask } =
+  boardSlice.actions;
