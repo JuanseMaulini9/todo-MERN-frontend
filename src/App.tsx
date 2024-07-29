@@ -12,19 +12,15 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<BoardPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route element={<Protectedroute />}>
             <Route
               path="/board/"
               element={
-                !authUser.username ? (
-                  <Navigate to="/login" />
-                ) : (
-                  <BoardPage/>
-                )
+                !authUser.username ? <Navigate to="/login" /> : <BoardPage />
               }
             />
           </Route>

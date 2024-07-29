@@ -30,7 +30,7 @@ const LoginForm = () => {
       className="flex flex-col justify-between items-center w-full gap-4"
       onSubmit={handleSubmit}
     >
-      <label htmlFor="username" className="font-bold">
+      <label htmlFor="username" className="font-bold text-text-main">
         Username
       </label>
       <input
@@ -38,10 +38,10 @@ const LoginForm = () => {
         name="username"
         type="text"
         placeholder="Username"
-        className="h-8 rounded p-2 bg-slate-950"
+        className="h-8 rounded p-2 bg-secondary-gray"
         onChange={handleInput}
       />
-      <label htmlFor="password" className="font-bold ">
+      <label htmlFor="password" className="font-bold text-text-main">
         Password
       </label>
       <input
@@ -49,11 +49,11 @@ const LoginForm = () => {
         name="password"
         type="password"
         placeholder="*******"
-        className="h-8 rounded p-2 bg-slate-950"
+        className="h-8 rounded p-2 bg-secondary-gray"
         onChange={handleInput}
       />
      
-      <button className="font-bold bg-blue-500 w-1/4 rounded py-2 hover:bg-blue-700">
+      <button className="font-bold bg-blue-700 w-1/4 rounded py-2 hover:bg-blue-500">
         Submit
       </button>
     </form>
