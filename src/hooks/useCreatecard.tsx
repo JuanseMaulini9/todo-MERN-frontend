@@ -10,7 +10,6 @@ const useCreateCard = () => {
     const res = await axios.post(`/task/createTask`, {stateValue, boardId})
     if(res.status === 201){
       const newTask: TasksInterface = res.data.task
-      console.log(newTask)
       dispatch(createTask(newTask))
     }
   } 

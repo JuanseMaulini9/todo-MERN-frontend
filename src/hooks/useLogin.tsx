@@ -12,7 +12,7 @@ const useLogin = () => {
     try{
       const res = await axios.post('/auth/login', {username, password})
       if(res.status === 200){
-        const data = res.data
+        const data = res.data.username
         setAuthUser(data)
         navigate('/board')
       }

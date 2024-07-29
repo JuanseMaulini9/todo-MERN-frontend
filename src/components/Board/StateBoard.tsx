@@ -25,7 +25,6 @@ const StateBoard = ({ stateBoard }: StateBoardProps) => {
 
     const card = board.currentBoard?.tasks.find((card) => card._id === id);
     if (card) {
-      console.log(`entre, id: ${id}`);
       if(board.currentBoard?.tasks)
       moveTask(id, board.currentBoard?.tasks);
     }

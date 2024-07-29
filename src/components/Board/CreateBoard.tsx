@@ -3,6 +3,7 @@ import { useState } from "react";
 import useNewBoard from "../../hooks/useNewBoard";
 import { createBoard } from "../../store/boadsNamesSlice";
 import { useAppDispatch } from "../../store/hooks";
+import CloseIcon from "../Icons/CloseIcon";
 
 interface Props {
   setNewBoard: Dispatch<boolean>;
@@ -44,9 +45,9 @@ const CreateBoard = ({ setNewBoard }: Props) => {
         </button>
         <button
           onClick={closeNewBoard}
-          className="w-20 h-8 font-semibold text-text-main rounded hover:bg-secondary-gray"
+          className="w-20 h-8 flex items-center justify-center font-semibold text-text-main rounded hover:bg-secondary-gray"
         >
-          X
+          <CloseIcon></CloseIcon>
         </button>
       </section>
     </div>

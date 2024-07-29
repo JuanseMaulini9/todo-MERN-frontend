@@ -7,7 +7,6 @@ const Card = ({
   _id,
   title,
   description,
-  expires,
   taskList
 }: TasksInterface) => {
   const dragStart = (e: React.DragEvent<HTMLDivElement>) => {
@@ -32,8 +31,8 @@ const Card = ({
       onClick={handleModal}
     >
       <section className="ml-2">
-        <h3 className="font-bold text-lg text-text-main">{title}</h3>
-        <h4 className=" text-text-secondary mb-4 -mt-1">
+        <h3 className="font-bold text-lg text-text-main mb-2">{title}</h3>
+        <h4 className=" text-text-secondary mb-4 -mt-1 overflow-hidden truncate">
           {description}
         </h4>
       </section>
@@ -51,9 +50,6 @@ const Card = ({
       </section>
 
       <section className="ml-2 ">
-        <p className="bg-main-gray text-text-main w-20 font-bold rounded-2xl text-xs h-6 mt-4 items-center flex justify-center">
-          {expires.toString()}
-        </p>
       </section>
     </div>
   );

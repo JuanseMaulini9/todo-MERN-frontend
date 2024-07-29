@@ -12,15 +12,15 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<BoardPage />} />
           <Route element={<Protectedroute />}>
             <Route
               path="/board/"
               element={
-                !authUser.username ? <Navigate to="/login" /> : <BoardPage />
+                !authUser ? <Navigate to="/login" /> : <BoardPage />
               }
             />
           </Route>

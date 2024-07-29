@@ -5,7 +5,8 @@ import useBoardDetail from "../../hooks/useBoardDetail";
 import BoardHeader from "./BoardHeader";
 
 const Board = () => {
-  useBoardDetail();
+  
+  useBoardDetail() 
   const board = useAppSelector((state) => state.currentBoard.currentBoardId);
 
   return (

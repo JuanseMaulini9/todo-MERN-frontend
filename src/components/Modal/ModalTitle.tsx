@@ -7,10 +7,9 @@ import { useAppDispatch } from "../../store/hooks";
 interface Props {
   title: string;
   stateValue: string;
-  expires: Date;
 }
 
-const ModalTitle = ({ title, stateValue, expires }: Props) => {
+const ModalTitle = ({ title, stateValue }: Props) => {
   const [editTitle, setEditTitle] = useState(false);
   const [titleState, setTitleState] = useState(title)
   const dispatch = useAppDispatch()
@@ -60,9 +59,6 @@ const ModalTitle = ({ title, stateValue, expires }: Props) => {
 
       <section className="flex mt-1 flex-row gap-4">
         <span className="text-sm text-text-secondary">{stateValue}</span>
-        <span className="text-sm text-text-main bg-secondary-gray w-24 text-center rounded-full">
-          {expires.toString()}
-        </span>
       </section>
     </section>
   );

@@ -21,7 +21,7 @@ const useSignup = () => {
       });
 
       if (res.status === 201) {
-        const data = res.data;
+        const data = res.data.username;
         setAuthUser(data);
         navigate('/board')
       }

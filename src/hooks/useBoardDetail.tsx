@@ -9,7 +9,6 @@ const useBoardDetail = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        console.log(currentBoard);
         if (currentBoard) {
           const res = await axios.get(`board/find/${currentBoard}`);
           if (res.status === 200) {

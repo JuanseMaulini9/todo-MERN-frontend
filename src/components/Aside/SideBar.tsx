@@ -16,7 +16,6 @@ const SideBar = () => {
     dispatch(setBoardsNames(boardsNames));
   }, [boardsNames, dispatch]);
 
-  console.log("boardsNames: ", boards);
 
   const [newBoard, setNewBoard] = useState(false);
 
